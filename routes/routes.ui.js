@@ -1,12 +1,13 @@
 const express = require("express");
+
 const router = express.Router();
 const CC= require("currency-converter-lt");
 
 router.get("/",(req,res) =>{
-    res.send({msg: "Hello from UI"});
+    res.render("index");
 });
 
-router.get("/converter/:currency1/:currency2/:value", async(req,res) =>{
+router.get("/converter/:currency1/:currency2/:value",async(req,res) =>{
     const { currency1, currency2, value} = req.params;
 
     
