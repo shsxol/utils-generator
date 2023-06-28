@@ -15,9 +15,21 @@ app.use(cors());
 app.set("view engine", "ejs")
 app.set("views","./views")
 
+// serving static files
 app.use(express.static("public"))
 
+
+// trying to test the application level error handler
+app.get("/broken", (req,res,next) =>{
+    throw new Error("Broken");
+})
 app.use("/", indexRouter);
+
+// application level handling
+app.use((err,req,res,next)=>{
+    console.log(err);
+    res.status(500).send("something went wrong");
+}); 
 
 
 app.listen(8000, () => { // call back=function bhitra function call  garnu
