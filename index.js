@@ -15,6 +15,8 @@ app.use(cors());
 app.set("view engine", "ejs")
 app.set("views","./views")
 
+app.use(express.static("public"))
+
 app.use("/", indexRouter);
 
 
